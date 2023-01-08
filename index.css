@@ -1,0 +1,315 @@
+/*global styles*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;/* IMP*/
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-family: 'Poppins', sans-serif;/* copied from google*/
+}
+button{/*we declared here globally because all buttons are of same type whole site*/
+ /*padding: 2rem,6rem; not working so we took all 4 right left top and bottom*/ 
+ padding-top: 2rem;
+ padding-bottom: 2rem;
+ padding-left: 6rem;
+ padding-right: 6rem;
+ background-color: #4c6e97;
+color: white;/*for white text*/
+border: none;
+cursor: pointer;/*to have button like feel*/
+/*transition:all 1s ease-in-out; FOR ALL THOSE IN BUTTON HOVER*/
+transition:background 1s ease-in-out
+}
+/*for adding transition to the button*/
+button:hover{
+background: #35465a ;
+font-size: 2rem;/*not get applied because we are only placing background transition*/
+}
+
+h1{font-size:2.6rem ;}
+p,li,button,label,input{
+    font-size: 2rem;
+}
+
+h2{font-size: 4.8rem;}
+h3{
+    font-size: 3rem;
+}
+h4,h5{
+font-size: 2.8rem;
+}
+a{
+    color: white;
+    text-decoration:none ;/* no underline*/
+}
+
+/* header part*/
+.main-head{
+    background-color: #131c27;
+    color:white ;/*color of all texts in header */
+    /*IMP : TO KEEP OUR HEADER STIKED TO THE SCREEN TILL OUR TOP GETS 0% */
+position: sticky;
+top: 0%;
+z-index: 2;/*the clouds were overlapping*/
+}
+nav{ 
+display: flex;/* so they come in line to travelly*/
+width: 90% ;
+margin: auto;
+min-height: 10vh;/*rem always give this height i.e a specific min height since it will keep that part fixed even if we make the screen shrink or other*/
+padding: 2rem;/*because after shrinking the site tha part must not look bad */
+align-items: center;
+flex-wrap: wrap;/*REM we are just mkaing changes in the header not the whole */
+}
+nav ul{
+    display: flex;
+    flex: 1 1 40rem;/*IMP : if we change 40rem to other greater than numbers then we will see the wrapping more fast */
+    justify-content: space-around;
+    /*align-items: center; because we mentioned up in nav so no need here*/ 
+    list-style: none;/*no dots for lists*/
+}
+#logo {
+  flex: 1 1 40rem;  
+  font-family: 'Pattaya', sans-serif;/*got from google fonts rem read the names of the fonts and only then copy*/
+font-weight: normal;/*normal is 400 only*/
+}
+
+/* section part*/
+.hero{
+background: linear-gradient(rgba(0, 0, 0 ,1.5),transparent),
+url(./img/landing-page.jpg);/*because now remember our background is image so we have to use background*/
+min-height: 90vh;/*because it was not taking compelet screen so as we required 100% screen to get covered we used the lesft 90vh because the header is 10vh*/
+background-repeat: no-repeat;/*our background was geting repeated */
+background-size:cover;/*REM HERE I JUST TRIED BY FINDING THE RHS NOTE:FIND RHS COVER(HERE) IF DON'T KNOW WHICH TO TAKE*/
+background-position: center;/*so now the background will show the centre*/
+color: white;/*to get the texts(all) white*/
+display: flex;/*to make all specific changes*/
+
+flex-direction: column;/*because we don't want all the content side by side we need it below each other */
+justify-content: center;/*it will come in same row(current) at the centre*/
+align-items: center;/*it will come at the centre row of page*/
+}
+h3{
+    padding: 2rem;/*since wanted to push the button and h1 away*/
+font-weight: 400;/*since we wanted to have our h1(here wala) bold so we reduced h3 ka weight*/
+}
+
+
+/*LOCATIONS SECTION*/
+#locations{
+min-height: 100vh;/*Rem this is our 1st step to get 100% screen for this part*/
+background:linear-gradient(rgba(0, 0, 0 ,0.7),transparent), url(./img/new-york-page.png);
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+position: relative;
+overflow: hidden;
+}
+.locations-head{
+    width: 90%;/*since we wanted to maintain that margine on both sides so 5% will be their on both sides*/
+    margin:auto ;/*to get left side margin*/
+}
+#locations h2{/*can use .loactions-head h2 also*/
+    text-decoration: underline;
+    padding: 1rem, 0rem;
+    text-decoration-thickness: 0.5rem ;/*thickness of underline*/
+   
+}
+#locations h3{
+
+    padding: 4rem, 0rem;
+    /*not working
+    background: linear-gradient(#131c27,#663b34);
+    background-clip: text;/*means only keep this color to text*/
+   /* -webkit-text-fill-color: transparent;*/
+}
+.cloud{
+    position: absolute;/*relative to this section so we wrote relative in locations class or it would have gone in nav section*/
+/*REM WITHOUT RIGHT LEFT TOP BOTTOM CAN'T MAKE CHANGES*/
+    top:0%;
+    right: 0%;
+    width: 50%;
+pointer-events: none;/*means while selecting the clouds won't get selected and only text will be selected*/
+}
+.cloud-2{
+    animation: cloudanimation 3s infinite alternate ease-in-out ;
+
+}
+.cloud-1{
+    top:20%;/*shift down by 20% Rem -ve and +ve ahe opposite here scale wise*/
+    z-index: -2;/*IMP THE ONE HAVING LESS VALUE WILL STAY BACK , HERE CLOUD-2 IS FRONT BECAUSE ITS VALUE IS +VE*/
+opacity: 0.5;
+animation: cloudanimation 3.5s infinite alternate ease-in-out ;
+}
+
+@keyframes cloudanimation{
+    from{
+        transform: translate(10%,-10%);
+    }
+    to{
+        transform: translate(0%,0%);
+    }
+}
+
+
+/*benefits section*/
+.benefits-head{
+background: #343c44; /*also can use background-color*/
+padding: 3rem;
+color: white;
+min-height: 30vh;
+display: flex;
+flex-direction: column;
+text-align: center;
+
+}
+.benefits-head h3{
+    padding: 1rem;
+}
+.cards{
+    min-height: 70vh;
+ width: 90%;/*to have that continuous margin 10 percent*/
+ margin: auto;/*with this the conent will have margin on both sides left and right*/
+display: flex;
+align-items: center;/*this will bring the content at the centre*/
+flex-wrap: wrap;
+}
+
+.card{
+    min-height: 40vh;
+   
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 5rem;
+    margin-right:5rem ;
+   
+    flex: 1 1 25rem;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0 ,0.1), 0px 20px 20px rgba(0, 0, 0 ,0.1);
+  
+}
+.cards img{
+    max-width: 15%;
+    margin: 2rem;
+
+}
+.card h4,.card p{
+    padding: 1rem;
+    line-height: 1.8;/*GIVES SPACING BETWEEN LINES*/
+   text-align: center;
+}
+.card-icon{
+    background: #35465a;
+    text-align: center;
+}
+
+/*CONTACT SECTION*/
+#contact{
+    background:linear-gradient(rgba(0, 0, 0 ,0.7),transparent), url(./img/contact-mountain.png);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+color: white;
+
+}
+.contact-div{
+    background:rgba(19,28,39,0.8);
+    border-radius: 20px;
+    width: 60%;
+}
+.contact-div button{
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 2rem;
+    margin-top: 8rem;
+}
+.contact-head{
+    text-align: center;
+    padding: 4rem;
+}
+.name,.email{
+    text-align: center;
+    padding: 3rem;
+}
+/*.email{
+    text-align: center;
+    padding: 3rem;
+}*/
+
+.name-text,.email-text{
+    margin-right: 3rem;
+}
+.input{
+  /*  padding: 1rem,3rem ;  THIS IS NOT WORKING IN MY LAPTOP 1REM MEANS PADDING TOP AND BOTTOM 3REM MEANS LEFT AND RIGHT*/
+padding-left: 1rem;
+padding-right: 1rem;
+padding-top: 2rem;
+padding-bottom: 2rem;
+}
+
+/*FOOTER PART*/
+footer{
+    background:rgba(19,28,39,1);/*REM NOT IN DIV FOOT BECAUSE WE ARE GIVING THAT 10% MARGIN SO IT WILL REMAIN WHITE*/
+color: white;
+}
+.foot{
+   display: flex;
+    min-height: 10vh;
+    width: 90%;
+    margin: auto;
+align-items: center;
+flex-wrap: wrap;
+}
+.foot ul{
+list-style: none;
+display: flex;
+flex: 1 1 40rem;/*itne mai nhi hoga h5 ko bhi dena padega*/
+justify-content: space-between;
+}
+.foot h5{
+    flex: 1 1 40rem;
+    font-family: 'Pattaya', sans-serif;
+    font-weight: 400;
+}
+
+/*MEDIA PART*/
+/*THIS PART IS WHEN WE HIT OUR MAX WIDTH TO 932 ALL THE BELOW WILL START FUNCTIONING*/
+@media screen and (max-width:932px){
+    html{
+        font-size: 45%;/*as we start wrapping the size of fonts also reduces , if we not put this then our size remains same i.e will not look good*/
+    }
+    nav{
+    text-align: center;/*so after wrapping our logo comes at centre*/
+
+} 
+  #logo{
+    padding: 1rem;/*so after wrapping their is some space between 3 links*/
+  }
+  .cloud{
+    height: 40rem;
+   
+  }
+.cloud-1{
+    z-index: -2;
+}
+.cloud-2{
+    z-index: -1;
+}
+footer{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+.contact-div{
+    width: 100%;
+}
+}
